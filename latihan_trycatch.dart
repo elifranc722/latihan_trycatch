@@ -51,7 +51,7 @@ void main() async {
 
   //=====================LATIHAN FOR=====================
   //print title, price, stock
-  Future<List<dynamic>> tarikdata() async {
+  Future<Map<dynamic, dynamic>> tarikdata() async {
     try {
         var response = await http.get(
         Uri.parse('https://dummyjson.com/products'),
@@ -61,13 +61,13 @@ void main() async {
         return data;
     } catch (e) {
         print(e);
-        return[];
+        return{};
     }
 }
 
-List<dynamic> hasil = await tarikdata();
-for(var i = 0; i < hasil.length; i++){
-    print("==========================");
-    print('${hasil[i]['title']}    ${hasil[i]['price']}   ${hasil[i]['stock']}');
+var hasil = await tarikdata();
+for(var i = 0; i < hasil['product'].length; i++){
+    print('===================================================');
+    print('${hasil['product'][i]['title']}    ${hasil['product'][i]['price']}   ${hasil['product'][i]['stock']}');
   }
 }
