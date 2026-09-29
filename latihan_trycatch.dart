@@ -13,21 +13,21 @@ void main() async {
 //   }
 // await tarikdata();
 
-  Future<List<dynamic>> tarikdata() async {
-    try {
-        var response = await http.get(
-        Uri.parse('https://jsonplaceholder.typicode.com/users'),
-      );
+//   Future<List<dynamic>> tarikdata() async {
+//     try {
+//         var response = await http.get(
+//         Uri.parse('https://jsonplaceholder.typicode.com/users'),
+//       );
 
-      var data = jsonDecode(response.body);
-        return data;
-    } catch (e) {
-        print(e);
-        return[];
-    }
-}
+//       var data = jsonDecode(response.body);
+//         return data;
+//     } catch (e) {
+//         print(e);
+//         return[];
+//     }
+// }
 
-List<dynamic> hasil = await tarikdata();
+// List<dynamic> hasil = await tarikdata();
   //=====================FOR=====================
   // for(var i = 0; i < hasil.length; i++){
   //   print("==========================");
@@ -49,6 +49,25 @@ List<dynamic> hasil = await tarikdata();
   // });
 
 
-  //LATIHAN FOR
+  //=====================LATIHAN FOR=====================
   //print title, price, stock
+  Future<List<dynamic>> tarikdata() async {
+    try {
+        var response = await http.get(
+        Uri.parse('https://dummyjson.com/products'),
+      );
+
+      var data = jsonDecode(response.body);
+        return data;
+    } catch (e) {
+        print(e);
+        return[];
+    }
+}
+
+List<dynamic> hasil = await tarikdata();
+for(var i = 0; i < hasil.length; i++){
+    print("==========================");
+    print('${hasil[i]['title']}    ${hasil[i]['price']}   ${hasil[i]['stock']}');
+  }
 }
